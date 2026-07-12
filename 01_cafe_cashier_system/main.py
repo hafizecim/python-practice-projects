@@ -149,3 +149,38 @@ payable_amount = total_price - discount_amount
 print(f"\nİndirim Oranı: %{discount_rate}")
 print(f"İndirim Tutarı: {discount_amount:.2f} TL")
 print(f"Ödenecek Tutar: {payable_amount:.2f} TL")
+
+# ----------------------------------------------------------
+# 7. Ödeme İşlemi
+# ----------------------------------------------------------
+
+print("\nÖdeme Yöntemi")
+print("1 - Nakit")
+print("2 - Kart")
+
+payment_method = input("Seçiminiz: ")
+
+payment_success = False
+change = 0
+
+
+if payment_method == "1":
+
+    cash = float(input("Verilen para: "))
+
+    if cash >= payable_amount:
+        change = cash - payable_amount
+        payment_success = True
+        print("Ödeme başarılı.")
+    else:
+        print("Yetersiz ödeme!")
+
+
+elif payment_method == "2":
+
+    print("Ödeme onaylandı.")
+    payment_success = True
+
+
+else:
+    print("Geçersiz ödeme seçimi.")
