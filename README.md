@@ -4,7 +4,7 @@ This repository contains my Python learning journey, including exercises, course
 
 ## Projects
 
-### 01 - KUZEM Cafe Cashier System
+### 01 - Cafe Cashier System
 A console-based cashier application developed during the KUZEM Python course.
 
 Features:
