@@ -69,3 +69,53 @@ print(f"1. {product1:<20} {price1:.2f} TL")
 print(f"2. {product2:<20} {price2:.2f} TL")
 print(f"3. {product3:<20} {price3:.2f} TL")
 print(f"4. {product4:<20} {price4:.2f} TL")
+
+# ----------------------------------------------------------
+# 5. Sipariş Alma
+# ----------------------------------------------------------
+
+total_price = 0
+
+order1 = input("1. ürünün numarası: ")
+
+if order1 == "1":
+    total_price += price1
+elif order1 == "2":
+    total_price += price2
+elif order1 == "3":
+    total_price += price3
+elif order1 == "4":
+    total_price += price4
+else:
+    print("Geçersiz ürün numarası")
+
+
+order2 = input("2. ürünün numarası: ")
+
+if order2 == "1":
+    total_price += price1
+elif order2 == "2":
+    total_price += price2
+elif order2 == "3":
+    total_price += price3
+elif order2 == "4":
+    total_price += price4
+else:
+    print("Geçersiz ürün numarası")
+
+
+order3 = input("3. ürünün numarası: ")
+
+if order3 == "1":
+    total_price += price1
+elif order3 == "2":
+    total_price += price2
+elif order3 == "3":
+    total_price += price3
+elif order3 == "4":
+    total_price += price4
+else:
+    print("Geçersiz ürün numarası")
+
+
+print(f"\nAra Toplam: {total_price:.2f} TL")
