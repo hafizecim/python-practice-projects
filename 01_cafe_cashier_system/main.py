@@ -3,9 +3,14 @@
 # Hazırlayan: Hafize Şenyıl
 # ==========================================================
 
-print("=" * 50)
-print("         KUZEM KAFE KASA SİSTEMİ")
-print("=" * 50)
+from colorama import Fore, Style, init
+
+init()
+
+print(Fore.CYAN + "=" * 50)
+print(Fore.YELLOW + "         KUZEM KAFE KASA SİSTEMİ")
+print(Fore.CYAN + "=" * 50)
+print(Style.RESET_ALL)
 
 # ----------------------------------------------------------
 # 1. Müşteri Kaydı
@@ -16,7 +21,7 @@ customer_name = input("Ad Soyad: ").strip().title()
 if customer_name == "":
     customer_name = "Misafir"
 
-print(f"\nHoş geldiniz {customer_name}!")
+print(Fore.GREEN + f"\nHoş geldiniz {customer_name}!" + Style.RESET_ALL)
 
 # ----------------------------------------------------------
 # 2. Telefon Doğrulama
@@ -29,7 +34,7 @@ if phone.isdigit() and len(phone) == 10:
     print("Telefon kaydedildi.")
 else:
     phone_valid = False
-    print("Telefon kaydedilemedi.")
+    print(Fore.RED + "Telefon kaydedilemedi." + Style.RESET_ALL)
 
 
 # ----------------------------------------------------------
