@@ -195,6 +195,15 @@ if payment_success:
     print("          KUZEM KAFE FİŞİ")
     print("=" * 40)
 
+    name_parts = customer_name.split()
+
+    initials = ""
+
+    for part in name_parts:
+        initials += part[0].upper() + "."
+
+    print(f"Müşteri      : {initials}")
+
     print(f"Müşteri Kodu : {customer_code}")
     print(f"Ara Toplam   : {total_price:.2f} TL")
     print(f"İndirim (%{discount_rate}) : {discount_amount:.2f} TL")
@@ -207,3 +216,21 @@ if payment_success:
 
 else:
     print("\nFiş yazdırılamadı.")
+    
+# ----------------------------------------------------------
+# Bonus: Kupon Kodu
+# ----------------------------------------------------------
+
+coupon_code = input("Kupon kodu (Varsa): ").strip().upper()
+
+if coupon_code == "KUZEM10":
+
+    extra_discount = payable_amount * 10 / 100
+    discount_amount = discount_amount + extra_discount
+    discount_rate = discount_rate + 10
+    payable_amount = payable_amount - extra_discount
+
+    print("KUZEM10 kupon indirimi uygulandı.")
+
+elif coupon_code != "":
+    print("Geçersiz kupon.")
