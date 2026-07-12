@@ -44,3 +44,28 @@ else:
     customer_code = customer_code + "00"
 
 print(f"Müşteri Kodu: {customer_code}")
+
+# ----------------------------------------------------------
+# 4. Menü
+# ----------------------------------------------------------
+
+print("\nKUZEM KAFE MENÜ")
+print("-" * 30)
+
+product1 = "Özel Kahve"
+price1 = 180
+
+product2 = "Kahvaltı Tabağı"
+price2 = 220
+
+product3 = "Burger Menü"
+price3 = 250
+
+product4 = "Tatlı Tabağı"
+price4 = 120
+
+
+print(f"1. {product1:<20} {price1:.2f} TL")
+print(f"2. {product2:<20} {price2:.2f} TL")
+print(f"3. {product3:<20} {price3:.2f} TL")
+print(f"4. {product4:<20} {price4:.2f} TL")
