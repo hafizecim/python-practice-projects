@@ -119,3 +119,33 @@ else:
 
 
 print(f"\nAra Toplam: {total_price:.2f} TL")
+
+# ----------------------------------------------------------
+# 6. İndirim Hesaplama
+# ----------------------------------------------------------
+
+discount_rate = 0
+
+if total_price >= 500:
+    discount_rate = 15
+elif total_price >= 300:
+    discount_rate = 10
+else:
+    discount_rate = 0
+
+
+# Öğrenci indirimi (iç içe koşul)
+
+student = input("Öğrenci misiniz? (E/H): ").strip().upper()
+
+if student == "E":
+    discount_rate = discount_rate + 5
+
+
+discount_amount = total_price * discount_rate / 100
+payable_amount = total_price - discount_amount
+
+
+print(f"\nİndirim Oranı: %{discount_rate}")
+print(f"İndirim Tutarı: {discount_amount:.2f} TL")
+print(f"Ödenecek Tutar: {payable_amount:.2f} TL")
