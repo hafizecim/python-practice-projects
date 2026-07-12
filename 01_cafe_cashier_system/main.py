@@ -184,3 +184,26 @@ elif payment_method == "2":
 
 else:
     print("Geçersiz ödeme seçimi.")
+    
+# ----------------------------------------------------------
+# 8. Fiş Yazdırma
+# ----------------------------------------------------------
+
+if payment_success:
+
+    print("\n" + "=" * 40)
+    print("          KUZEM KAFE FİŞİ")
+    print("=" * 40)
+
+    print(f"Müşteri Kodu : {customer_code}")
+    print(f"Ara Toplam   : {total_price:.2f} TL")
+    print(f"İndirim (%{discount_rate}) : {discount_amount:.2f} TL")
+    print(f"Ödenecek     : {payable_amount:.2f} TL")
+
+    if payment_method == "1":
+        print(f"Para Üstü    : {change:.2f} TL")
+
+    print("=" * 40)
+
+else:
+    print("\nFiş yazdırılamadı.")
