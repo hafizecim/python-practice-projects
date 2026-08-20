@@ -55,6 +55,7 @@ def menu_goster():
     print("1 - Üye Ekle")
     print("2 - Antrenman Kaydet")
     print("3 - Rapor Görüntüle")
+    print("4 - Üye Sil")
     print("0 - Çıkış")
     print("=" * 40)
 
@@ -237,6 +238,38 @@ def programi_baslat():
 
         elif secim == "3":
             rapor_goster()
+            
+        elif secim == "4":
+            print("\n--- ÜYE SİL ---")
+
+            if not uyeler:
+                print(
+                    "Silinecek kayıtlı üye bulunmamaktadır."
+                )
+                continue
+
+            silinecek_isim = input(
+                "Silinecek üyenin adı: "
+            ).strip().title()
+
+            uye_bulundu = False
+
+            for uye in uyeler:
+                if uye["isim"] == silinecek_isim:
+                    uyeler.remove(uye)
+                    uye_bulundu = True
+
+                    print(
+                        f"\n{silinecek_isim} "
+                        "başarıyla silindi."
+                    )
+                    break
+
+            if not uye_bulundu:
+                print(
+                    f"\n'{silinecek_isim}' "
+                    "isimli üye bulunamadı."
+                )
 
         elif secim == "0":
             print("\nProgram sonlandırıldı.")
