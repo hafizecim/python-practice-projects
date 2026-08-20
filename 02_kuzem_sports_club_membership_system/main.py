@@ -11,7 +11,14 @@ def uye_ekle(isim, paket="Standart"):
     return uye
 
 
-# Fonksiyon testi
+def antrenman_ekle(uye, *sureler):
+    for sure in sureler:
+        uye["antrenmanlar"].append(sure)
+
+
+# Test
 yeni_uye = uye_ekle("hafize şenyıl")
+
+antrenman_ekle(yeni_uye, 60, 45, 30)
 
 print(yeni_uye)
