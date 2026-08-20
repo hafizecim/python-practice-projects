@@ -105,8 +105,12 @@ def programi_baslat():
             paket = input(
                 "Üyelik paketi (Standart/Premium/Gold): "
             ).strip()
+            
+            if paket:
+                yeni_uye = uye_ekle(isim, paket)
+            else:
+                yeni_uye = uye_ekle(isim)
 
-            yeni_uye = uye_ekle(isim, paket)
 
             print("\n--- EK ÜYE BİLGİLERİ ---")
 
