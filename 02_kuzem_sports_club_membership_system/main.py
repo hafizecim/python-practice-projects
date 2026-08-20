@@ -2,9 +2,22 @@
 
 
 def uye_ekle(isim, paket="Standart"):
+    paket = paket.strip().title()
+
+    if paket == "Standart":
+        fiyat = 500
+    elif paket == "Premium":
+        fiyat = 750
+    elif paket == "Gold":
+        fiyat = 1000
+    else:
+        paket = "Standart"
+        fiyat = 500
+
     uye = {
         "isim": isim.strip().title(),
-        "paket": paket.strip().title(),
+        "paket": paket,
+        "fiyat": fiyat,
         "antrenmanlar": []
     }
 
@@ -28,7 +41,7 @@ def uye_karti(**bilgiler):
 
 
 # Test
-yeni_uye = uye_ekle("hafize şenyıl")
+yeni_uye = uye_ekle("hafize şenyıl", "Gold")
 
 antrenman_ekle(yeni_uye, 60, 45, 30)
 
@@ -44,4 +57,6 @@ profil_bilgileri = {
 
 uye_karti(**profil_bilgileri)
 
-print(f"\nToplam antrenman süresi: {toplam_sure} dakika")
+print(f"\nÜyelik paketi: {yeni_uye['paket']}")
+print(f"Üyelik fiyatı: {yeni_uye['fiyat']:.2f} TL")
+print(f"Toplam antrenman süresi: {toplam_sure} dakika")
