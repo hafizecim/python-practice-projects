@@ -54,6 +54,32 @@ def menu_goster():
     print("=" * 40)
 
 
+def rapor_goster():
+    print("\n" + "=" * 60)
+    print("                 ÜYE RAPORU")
+    print("=" * 60)
+
+    if not uyeler:
+        print("Henüz kayıtlı üye bulunmamaktadır.")
+        return
+
+    for sira, uye in enumerate(uyeler, start=1):
+        toplam_sure = toplam_sure_hesapla(
+            *uye["antrenmanlar"]
+        )
+
+        print(
+            f"{sira}. {uye['isim']} | "
+            f"Paket: {uye['paket']} | "
+            f"Fiyat: {uye['fiyat']:.2f} TL | "
+            f"Toplam Antrenman: {toplam_sure:.2f} dakika"
+        )
+
+    print("-" * 60)
+    print(f"Toplam üye sayısı: {len(uyeler)}")
+    print("=" * 60)
+
+
 def programi_baslat():
     while True:
         menu_goster()
@@ -76,9 +102,15 @@ def programi_baslat():
             yeni_uye = uye_ekle(isim, paket)
             uyeler.append(yeni_uye)
 
-            print(f"\nÜye başarıyla eklendi: {yeni_uye['isim']}")
+            print(
+                f"\nÜye başarıyla eklendi: "
+                f"{yeni_uye['isim']}"
+            )
             print(f"Üyelik paketi: {yeni_uye['paket']}")
-            print(f"Üyelik fiyatı: {yeni_uye['fiyat']:.2f} TL")
+            print(
+                f"Üyelik fiyatı: "
+                f"{yeni_uye['fiyat']:.2f} TL"
+            )
 
         elif secim == "2":
             print("\n--- ANTRENMAN KAYDET ---")
@@ -107,18 +139,25 @@ def programi_baslat():
             secilen_uye = uyeler[uye_index]
 
             print(
-                "\nAynı gün birden fazla antrenman ekleyebilirsiniz."
+                "\nAynı gün birden fazla antrenman "
+                "ekleyebilirsiniz."
             )
-            print("Antrenman girişini bitirmek için '0' giriniz.")
+            print(
+                "Antrenman girişini bitirmek için "
+                "'0' giriniz."
+            )
 
             sureler = []
 
             while True:
-                sure = input("Antrenman süresi (dakika): ").strip()
+                sure = input(
+                    "Antrenman süresi (dakika): "
+                ).strip()
 
                 if not sure.isdigit():
                     print(
-                        "Hata: Antrenman süresi sayı olmalıdır."
+                        "Hata: Antrenman süresi "
+                        "sayı olmalıdır."
                     )
                     continue
 
@@ -126,12 +165,6 @@ def programi_baslat():
 
                 if sure == 0:
                     break
-
-                if sure < 0:
-                    print(
-                        "Hata: Antrenman süresi negatif olamaz."
-                    )
-                    continue
 
                 sureler.append(sure)
 
@@ -143,10 +176,13 @@ def programi_baslat():
                     f"{len(sureler)} antrenman kaydedildi."
                 )
             else:
-                print("\nHerhangi bir antrenman kaydedilmedi.")
+                print(
+                    "\nHerhangi bir antrenman "
+                    "kaydedilmedi."
+                )
 
         elif secim == "3":
-            print("\nRapor özelliği sonraki aşamada eklenecek.")
+            rapor_goster()
 
         elif secim == "0":
             print("\nProgram sonlandırıldı.")
@@ -155,7 +191,8 @@ def programi_baslat():
         else:
             print(
                 "\nGeçersiz seçim! "
-                "Lütfen menüden geçerli bir seçenek giriniz."
+                "Lütfen menüden geçerli "
+                "bir seçenek giriniz."
             )
 
 
