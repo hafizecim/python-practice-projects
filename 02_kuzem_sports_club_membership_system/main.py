@@ -1,6 +1,9 @@
 # KUZEM Spor Kulübü Üyelik ve Antrenman Sistemi
 
 
+uyeler = []
+
+
 def uye_ekle(isim, paket="Standart"):
     paket = paket.strip().title()
 
@@ -40,23 +43,48 @@ def uye_karti(**bilgiler):
         print(f"{anahtar.replace('_', ' ').title()}: {deger}")
 
 
-# Test
-yeni_uye = uye_ekle("hafize şenyıl", "Gold")
+def menu_goster():
+    print("\n" + "=" * 40)
+    print("       KUZEM SPOR KULÜBÜ")
+    print("=" * 40)
+    print("1 - Üye Ekle")
+    print("2 - Antrenman Kaydet")
+    print("3 - Rapor Görüntüle")
+    print("0 - Çıkış")
+    print("=" * 40)
 
-antrenman_ekle(yeni_uye, 60, 45, 30)
 
-toplam_sure = toplam_sure_hesapla(*yeni_uye["antrenmanlar"])
+def programi_baslat():
+    while True:
+        menu_goster()
 
-profil_bilgileri = {
-    "isim": yeni_uye["isim"],
-    "paket": yeni_uye["paket"],
-    "telefon": "0555 123 45 67",
-    "dogum_tarihi": "15.05.1995",
-    "acil_durum_kisisi": "Ayşe Şenyıl"
-}
+        secim = input("Seçiminiz: ").strip()
 
-uye_karti(**profil_bilgileri)
+        if secim == "1":
+            print("\n--- ÜYE EKLE ---")
 
-print(f"\nÜyelik paketi: {yeni_uye['paket']}")
-print(f"Üyelik fiyatı: {yeni_uye['fiyat']:.2f} TL")
-print(f"Toplam antrenman süresi: {toplam_sure} dakika")
+            isim = input("Üye adı: ")
+            paket = input(
+                "Üyelik paketi (Standart/Premium/Gold): "
+            )
+
+            yeni_uye = uye_ekle(isim, paket)
+            uyeler.append(yeni_uye)
+
+            print(f"\nÜye başarıyla eklendi: {yeni_uye['isim']}")
+
+        elif secim == "2":
+            print("\nAntrenman kaydı özelliği sonraki aşamada eklenecek.")
+
+        elif secim == "3":
+            print("\nRapor özelliği sonraki aşamada eklenecek.")
+
+        elif secim == "0":
+            print("\nProgram sonlandırıldı.")
+            break
+
+        else:
+            print("\nGeçersiz seçim! Lütfen menüden geçerli bir seçenek giriniz.")
+
+
+programi_baslat()
