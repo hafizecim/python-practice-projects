@@ -16,9 +16,16 @@ def antrenman_ekle(uye, *sureler):
         uye["antrenmanlar"].append(sure)
 
 
+def toplam_sure_hesapla(*sureler):
+    return sum(sureler)
+
+
 # Test
 yeni_uye = uye_ekle("hafize şenyıl")
 
 antrenman_ekle(yeni_uye, 60, 45, 30)
 
+toplam_sure = toplam_sure_hesapla(*yeni_uye["antrenmanlar"])
+
 print(yeni_uye)
+print(f"Toplam antrenman süresi: {toplam_sure} dakika")
