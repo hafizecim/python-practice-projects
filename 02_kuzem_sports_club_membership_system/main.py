@@ -77,7 +77,8 @@ def rapor_goster():
             f"{sira}. {uye['isim']} | "
             f"Paket: {uye['paket']} | "
             f"Fiyat: {uye['fiyat']:.2f} TL | "
-            f"Toplam Antrenman: {toplam_sure:.2f} dakika"
+            f"Toplam Antrenman: "
+            f"{toplam_sure:.2f} dakika"
         )
 
     print("-" * 60)
@@ -109,19 +110,22 @@ def programi_baslat():
             print("\n--- EK ÜYE BİLGİLERİ ---")
 
             telefon = input("Telefon: ").strip()
-            dogum_tarihi = input("Doğum tarihi: ").strip()
+
+            dogum_tarihi = input(
+                "Doğum tarihi: "
+            ).strip()
+
             acil_durum_kisisi = input(
                 "Acil durum kişisi: "
             ).strip()
 
             profil_bilgileri = {
-                "isim": yeni_uye["isim"],
-                "paket": yeni_uye["paket"],
-                "fiyat": f"{yeni_uye['fiyat']:.2f} TL",
                 "telefon": telefon,
                 "dogum_tarihi": dogum_tarihi,
                 "acil_durum_kisisi": acil_durum_kisisi
             }
+
+            yeni_uye["profil"] = profil_bilgileri
 
             uyeler.append(yeni_uye)
 
@@ -129,16 +133,23 @@ def programi_baslat():
                 f"\nÜye başarıyla eklendi: "
                 f"{yeni_uye['isim']}"
             )
+
             print(
                 f"Üyelik paketi: "
                 f"{yeni_uye['paket']}"
             )
+
             print(
                 f"Üyelik fiyatı: "
                 f"{yeni_uye['fiyat']:.2f} TL"
             )
 
-            uye_karti(**profil_bilgileri)
+            uye_karti(
+                isim=yeni_uye["isim"],
+                paket=yeni_uye["paket"],
+                fiyat=f"{yeni_uye['fiyat']:.2f} TL",
+                **profil_bilgileri
+            )
 
         elif secim == "2":
             print("\n--- ANTRENMAN KAYDET ---")
@@ -179,6 +190,7 @@ def programi_baslat():
                 "\nAynı gün birden fazla "
                 "antrenman ekleyebilirsiniz."
             )
+
             print(
                 "Antrenman girişini bitirmek "
                 "için '0' giriniz."
@@ -216,6 +228,7 @@ def programi_baslat():
                     f"{len(sureler)} antrenman "
                     f"kaydedildi."
                 )
+
             else:
                 print(
                     "\nHerhangi bir antrenman "
