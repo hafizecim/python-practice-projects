@@ -37,10 +37,15 @@ def toplam_sure_hesapla(*sureler):
 
 
 def uye_karti(**bilgiler):
-    print("\n--- ÜYE PROFİL KARTI ---")
+    print("\n" + "=" * 40)
+    print("          ÜYE PROFİL KARTI")
+    print("=" * 40)
 
     for anahtar, deger in bilgiler.items():
-        print(f"{anahtar.replace('_', ' ').title()}: {deger}")
+        baslik = anahtar.replace("_", " ").title()
+        print(f"{baslik}: {deger}")
+
+    print("=" * 40)
 
 
 def menu_goster():
@@ -100,23 +105,48 @@ def programi_baslat():
             ).strip()
 
             yeni_uye = uye_ekle(isim, paket)
+
+            print("\n--- EK ÜYE BİLGİLERİ ---")
+
+            telefon = input("Telefon: ").strip()
+            dogum_tarihi = input("Doğum tarihi: ").strip()
+            acil_durum_kisisi = input(
+                "Acil durum kişisi: "
+            ).strip()
+
+            profil_bilgileri = {
+                "isim": yeni_uye["isim"],
+                "paket": yeni_uye["paket"],
+                "fiyat": f"{yeni_uye['fiyat']:.2f} TL",
+                "telefon": telefon,
+                "dogum_tarihi": dogum_tarihi,
+                "acil_durum_kisisi": acil_durum_kisisi
+            }
+
             uyeler.append(yeni_uye)
 
             print(
                 f"\nÜye başarıyla eklendi: "
                 f"{yeni_uye['isim']}"
             )
-            print(f"Üyelik paketi: {yeni_uye['paket']}")
+            print(
+                f"Üyelik paketi: "
+                f"{yeni_uye['paket']}"
+            )
             print(
                 f"Üyelik fiyatı: "
                 f"{yeni_uye['fiyat']:.2f} TL"
             )
 
+            uye_karti(**profil_bilgileri)
+
         elif secim == "2":
             print("\n--- ANTRENMAN KAYDET ---")
 
             if not uyeler:
-                print("Henüz kayıtlı üye bulunmamaktadır.")
+                print(
+                    "Henüz kayıtlı üye bulunmamaktadır."
+                )
                 continue
 
             print("\nKayıtlı Üyeler:")
@@ -124,27 +154,34 @@ def programi_baslat():
             for sira, uye in enumerate(uyeler, start=1):
                 print(f"{sira} - {uye['isim']}")
 
-            uye_secimi = input("Üye numarası: ").strip()
+            uye_secimi = input(
+                "Üye numarası: "
+            ).strip()
 
             if not uye_secimi.isdigit():
-                print("Hata: Üye numarası sayı olmalıdır.")
+                print(
+                    "Hata: Üye numarası "
+                    "sayı olmalıdır."
+                )
                 continue
 
             uye_index = int(uye_secimi) - 1
 
             if uye_index < 0 or uye_index >= len(uyeler):
-                print("Hata: Geçersiz üye numarası.")
+                print(
+                    "Hata: Geçersiz üye numarası."
+                )
                 continue
 
             secilen_uye = uyeler[uye_index]
 
             print(
-                "\nAynı gün birden fazla antrenman "
-                "ekleyebilirsiniz."
+                "\nAynı gün birden fazla "
+                "antrenman ekleyebilirsiniz."
             )
             print(
-                "Antrenman girişini bitirmek için "
-                "'0' giriniz."
+                "Antrenman girişini bitirmek "
+                "için '0' giriniz."
             )
 
             sureler = []
@@ -169,11 +206,15 @@ def programi_baslat():
                 sureler.append(sure)
 
             if sureler:
-                antrenman_ekle(secilen_uye, *sureler)
+                antrenman_ekle(
+                    secilen_uye,
+                    *sureler
+                )
 
                 print(
                     f"\n{secilen_uye['isim']} için "
-                    f"{len(sureler)} antrenman kaydedildi."
+                    f"{len(sureler)} antrenman "
+                    f"kaydedildi."
                 )
             else:
                 print(
