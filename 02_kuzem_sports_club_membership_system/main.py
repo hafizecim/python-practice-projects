@@ -363,7 +363,7 @@ def programi_baslat():
                     + f"\n'{silinecek_isim}' "
                     "isimli üye bulunamadı."
                     + RESET
-                )
+                ) 
 
         # 0 - Programdan çıkış
         elif secim == "0":
