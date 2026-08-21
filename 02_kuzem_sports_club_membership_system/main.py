@@ -136,12 +136,12 @@ def programi_baslat():
 
         # 1 - Üye ekleme
         if secim == "1":
-            print("\n--- ÜYE EKLE ---")
+            print("\n" + BLUE + "--- ÜYE EKLE ---" + RESET)
 
             isim = input("Üye adı: ").strip()
 
             if not isim:
-                print("Üye adı boş bırakılamaz.")
+                print(RED + "Üye adı boş bırakılamaz." + RESET)
                 continue
 
             paket = input(
@@ -157,7 +157,7 @@ def programi_baslat():
             else:
                 yeni_uye = uye_ekle(isim)
 
-            print("\n--- EK ÜYE BİLGİLERİ ---")
+            print("\n" + CYAN + "--- EK ÜYE BİLGİLERİ ---" + RESET)
 
             # Hoca kriteri:
             # En az 3 farklı ekstra profil bilgisi alınır.
@@ -184,18 +184,24 @@ def programi_baslat():
             uyeler.append(yeni_uye)
 
             print(
-                f"\nÜye başarıyla eklendi: "
-                f"{yeni_uye['isim']}"
+                GREEN
+                + f"\nÜye başarıyla eklendi: "
+                  f"{yeni_uye['isim']}"
+                + RESET
             )
 
             print(
-                f"Üyelik paketi: "
-                f"{yeni_uye['paket']}"
+                CYAN
+                + f"Üyelik paketi: "
+                  f"{yeni_uye['paket']}"
+                + RESET
             )
 
             print(
-                f"Üyelik fiyatı: "
-                f"{yeni_uye['fiyat']:.2f} TL"
+                YELLOW
+                + f"Üyelik fiyatı: "
+                  f"{yeni_uye['fiyat']:.2f} TL"
+                + RESET
             )
 
             # Hoca kriteri:
@@ -210,11 +216,11 @@ def programi_baslat():
 
         # 2 - Antrenman kaydetme
         elif secim == "2":
-            print("\n--- ANTRENMAN KAYDET ---")
+            print("\n" + BLUE + "--- ANTRENMAN KAYDET ---" + RESET)
 
             if not uyeler:
                 print(
-                    "Henüz kayıtlı üye bulunmamaktadır."
+                    YELLOW + "Henüz kayıtlı üye bulunmamaktadır." + RESET
                 )
                 continue
 
@@ -232,8 +238,10 @@ def programi_baslat():
             # program çökmemeli ve kullanıcı uyarılmalıdır.
             if not uye_secimi.isdigit():
                 print(
-                    "Hata: Üye numarası "
+                    RED
+                    + "Hata: Üye numarası "
                     "sayı olmalıdır."
+                    + RESET
                 )
                 continue
 
@@ -241,20 +249,26 @@ def programi_baslat():
 
             if uye_index < 0 or uye_index >= len(uyeler):
                 print(
-                    "Hata: Geçersiz üye numarası."
+                    RED
+                    + "Hata: Geçersiz üye numarası."
+                    + RESET
                 )
                 continue
 
             secilen_uye = uyeler[uye_index]
 
             print(
-                "\nAynı gün birden fazla "
-                "antrenman ekleyebilirsiniz."
+                YELLOW
+                + "\nAynı gün birden fazla "
+                  "antrenman ekleyebilirsiniz."
+                + RESET
             )
 
             print(
-                "Antrenman girişini bitirmek "
-                "için '0' giriniz."
+                YELLOW
+                + "Antrenman girişini bitirmek "
+                  "için '0' giriniz."
+                + RESET
             )
 
             sureler = []
@@ -267,8 +281,10 @@ def programi_baslat():
                 # Geçersiz sayı girişi programı durdurmaz.
                 if not sure.isdigit():
                     print(
-                        "Hata: Antrenman süresi "
-                        "sayı olmalıdır."
+                        RED
+                        + "Hata: Antrenman süresi "
+                          "sayı olmalıdır."
+                        + RESET
                     )
                     continue
 
@@ -290,15 +306,19 @@ def programi_baslat():
                 )
 
                 print(
-                    f"\n{secilen_uye['isim']} için "
-                    f"{len(sureler)} antrenman "
-                    f"kaydedildi."
+                    GREEN
+                    + f"\n{secilen_uye['isim']} için "
+                      f"{len(sureler)} antrenman "
+                      f"kaydedildi."
+                    + RESET
                 )
 
             else:
                 print(
-                    "\nHerhangi bir antrenman "
-                    "kaydedilmedi."
+                    YELLOW
+                    + "\nHerhangi bir antrenman "
+                      "kaydedilmedi."
+                    + RESET
                 )
 
         # 3 - Tüm üyelerin raporunu gösterme
@@ -307,11 +327,11 @@ def programi_baslat():
 
         # 4 - BONUS: Üye silme
         elif secim == "4":
-            print("\n--- ÜYE SİL ---")
+            print("\n" + RED + "--- ÜYE SİL ---" + RESET)
 
             if not uyeler:
                 print(
-                    "Silinecek kayıtlı üye bulunmamaktadır."
+                    RED + "Silinecek kayıtlı üye bulunmamaktadır." + RESET
                 )
                 continue
 
@@ -330,15 +350,19 @@ def programi_baslat():
                     uye_bulundu = True
 
                     print(
-                        f"\n{silinecek_isim} "
+                        GREEN
+                        + f"\n{silinecek_isim} "
                         "başarıyla silindi."
+                        + RESET
                     )
                     break
 
             if not uye_bulundu:
                 print(
-                    f"\n'{silinecek_isim}' "
+                    RED
+                    + f"\n'{silinecek_isim}' "
                     "isimli üye bulunamadı."
+                    + RESET
                 )
 
         # 0 - Programdan çıkış
@@ -349,9 +373,11 @@ def programi_baslat():
         # Menüde olmayan bir seçim yapılırsa kullanıcı uyarılır.
         else:
             print(
-                "\nGeçersiz seçim! "
-                "Lütfen menüden geçerli "
-                "bir seçenek giriniz."
+                RED
+                + "\nGeçersiz seçim! "
+                  "Lütfen menüden geçerli "
+                  "bir seçenek giriniz."
+                + RESET
             )
 
 
