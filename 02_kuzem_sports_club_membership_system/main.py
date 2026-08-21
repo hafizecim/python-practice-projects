@@ -105,12 +105,11 @@ def programi_baslat():
             paket = input(
                 "Üyelik paketi (Standart/Premium/Gold): "
             ).strip()
-            
+
             if paket:
                 yeni_uye = uye_ekle(isim, paket)
             else:
                 yeni_uye = uye_ekle(isim)
-
 
             print("\n--- EK ÜYE BİLGİLERİ ---")
 
@@ -153,7 +152,7 @@ def programi_baslat():
                 isim=yeni_uye["isim"],
                 paket=yeni_uye["paket"],
                 fiyat=f"{yeni_uye['fiyat']:.2f} TL",
-                **profil_bilgileri
+                **yeni_uye["profil"]
             )
 
         elif secim == "2":
@@ -242,7 +241,7 @@ def programi_baslat():
 
         elif secim == "3":
             rapor_goster()
-            
+
         elif secim == "4":
             print("\n--- ÜYE SİL ---")
 
