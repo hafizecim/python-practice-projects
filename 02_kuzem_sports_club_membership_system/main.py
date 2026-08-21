@@ -1,6 +1,17 @@
 # KUZEM Spor Kulübü Üyelik ve Antrenman Sistemi
 
 
+# Terminal renkleri
+RESET = "\033[0m"
+BOLD = "\033[1m"
+
+RED = "\033[91m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+BLUE = "\033[94m"
+CYAN = "\033[96m"
+WHITE = "\033[97m"
+
 # Tüm üyelerin saklanacağı liste
 uyeler = []
 
@@ -68,15 +79,17 @@ def uye_karti(**bilgiler):
 
 # Kullanıcıya program menüsünü gösterir.
 def menu_goster():
-    print("\n" + "=" * 40)
-    print("       KUZEM SPOR KULÜBÜ")
-    print("=" * 40)
-    print("1 - Üye Ekle")
-    print("2 - Antrenman Kaydet")
-    print("3 - Rapor Görüntüle")
-    print("4 - Üye Sil")
-    print("0 - Çıkış")
-    print("=" * 40)
+    print("\n" + CYAN + "=" * 40 + RESET)
+    print(BOLD + CYAN + "       KUZEM SPOR KULÜBÜ" + RESET)
+    print(CYAN + "=" * 40 + RESET)
+
+    print(GREEN + "1 - Üye Ekle" + RESET)
+    print(YELLOW + "2 - Antrenman Kaydet" + RESET)
+    print(BLUE + "3 - Rapor Görüntüle" + RESET)
+    print(RED + "4 - Üye Sil" + RESET)
+    print(BOLD + WHITE + "0 - Çıkış" + RESET)
+
+    print(CYAN + "=" * 40 + RESET)
 
 
 # Hoca kriteri:
